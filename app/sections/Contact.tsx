@@ -8,10 +8,12 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -34,15 +36,20 @@ export default function Contact() {
         body: JSON.stringify(formData)
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', website: '' });
+        setErrorMessage('');
       } else {
         setSubmitStatus('error');
+        setErrorMessage(data.error || 'Error sending message. Please try again.');
       }
     } catch (error) {
       console.error('Error sending message:', error);
       setSubmitStatus('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -337,6 +344,24 @@ export default function Contact() {
                 />
               </div>
               
+              {/* Honeypot Field - Hidden from users */}
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                autoComplete="off"
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  width: '1px',
+                  height: '1px',
+                  opacity: 0
+                }}
+                tabIndex={-1}
+                aria-hidden="true"
+              />
+              
               {/* Submit Button */}
               <button
                 type="submit"
@@ -397,7 +422,7 @@ export default function Contact() {
                   color: '#ef4444',
                   textAlign: 'center'
                 }}>
-                  ❌ Error sending message. Please try again or email me directly.
+                  ❌ {errorMessage}
                 </div>
               )}
             </form>
