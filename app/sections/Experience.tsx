@@ -135,8 +135,8 @@ export default function Experience() {
                     >
                       <span style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600 }}>{exp.date}</span>
                       <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '0.5rem' }}>{exp.title}</h3>
-                      <h4 style={{ fontSize: '1.125rem', color: 'var(--color-accent)' }}>{exp.company}</h4>
-                      <p style={{ color: 'var(--color-accent)', marginTop: '0.5rem' }}>{exp.description}</p>
+                      <h4 className="text-gray-static" style={{ fontSize: '1.125rem' }}>{exp.company}</h4>
+                      <p className="text-gray-static" style={{ marginTop: '0.5rem' }}>{exp.description}</p>
                       <div style={{
                         marginTop: '1rem',
                         fontSize: '0.875rem',
@@ -206,7 +206,7 @@ export default function Experience() {
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginTop: '0.5rem' }}>
                   {modal.experience.title}
                 </h3>
-                <h4 style={{ fontSize: '1.125rem', color: 'var(--color-accent)' }}>
+                <h4 className="text-gray-static" style={{ fontSize: '1.125rem' }}>
                   {modal.experience.company}
                 </h4>
               </div>
@@ -239,9 +239,8 @@ export default function Experience() {
                     marginBottom: '0.75rem',
                     paddingLeft: '1.5rem',
                     position: 'relative',
-                    color: 'var(--color-accent)',
                     lineHeight: '1.6'
-                  }}>
+                  }} className="text-gray-static">
                     <span style={{
                       position: 'absolute',
                       left: 0,

@@ -70,7 +70,7 @@ export default function Projects() {
     <section id="projects" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
       <div className="container">
         <h2 className="section-title">Featured Projects</h2>
-        <p style={{ textAlign: 'center', fontSize: '1.125rem', color: 'var(--color-accent)', marginBottom: '3rem', maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto' }}>
+        <p style={{ textAlign: 'center', fontSize: '1.125rem', marginBottom: '3rem', maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto' }} className="text-gray-static">
           A showcase of my work spanning web development and data engineering, from user-facing applications to robust data infrastructure
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
@@ -169,7 +169,7 @@ export default function Projects() {
               {/* Project Content */}
               <div style={{ padding: '1.5rem' }}>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem' }}>{project.title}</h3>
-                <p style={{ color: 'var(--color-accent)', marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
+                <p className="text-gray-static" style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {project.technologies.map((tech) => (
                     <span

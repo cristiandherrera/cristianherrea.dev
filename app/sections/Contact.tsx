@@ -68,16 +68,15 @@ export default function Contact() {
               marginBottom: '1rem',
               color: 'var(--foreground)'
             }}>
-              Let's Work Together
+              Let&apos;s Work Together
             </h3>
             <p style={{ 
               fontSize: '1.125rem', 
-              color: 'var(--color-accent)', 
               marginBottom: '2rem',
               lineHeight: '1.6'
-            }}>
+            }} className="text-gray-static">
               Ready to build something amazing together? Whether you need a stunning web application, 
-              robust data infrastructure, or end-to-end solutions that bridge both worlds, I'd love to hear about your project.
+              robust data infrastructure, or end-to-end solutions that bridge both worlds, I&apos;d love to hear about your project.
             </p>
             
             {/* Contact Links */}
@@ -112,7 +111,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 600 }}>Email</div>
-                  <div style={{ color: 'var(--color-accent)' }}>cristian.herrera.dev@gmail.com</div>
+                  <div className="text-gray-static">cristian.herrera.dev@gmail.com</div>
                 </div>
               </Link>
               
@@ -148,7 +147,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 600 }}>LinkedIn</div>
-                  <div style={{ color: 'var(--color-accent)' }}>Connect with me</div>
+                  <div className="text-gray-static">Connect with me</div>
                 </div>
               </Link>
               
@@ -184,7 +183,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 600 }}>GitHub</div>
-                  <div style={{ color: 'var(--color-accent)' }}>View my projects</div>
+                  <div className="text-gray-static">View my projects</div>
                 </div>
               </Link>
             </div>
@@ -385,7 +384,7 @@ export default function Contact() {
                   color: '#22c55e',
                   textAlign: 'center'
                 }}>
-                  ✅ Message sent successfully! I'll get back to you soon.
+                  ✅ Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               

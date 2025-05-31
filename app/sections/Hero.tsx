@@ -60,8 +60,8 @@ export default function Hero() {
               marginBottom: '1.5rem',
               lineHeight: '1.1'
             }}>
-              <span style={{ display: 'block', marginBottom: '0.5rem' }} className="gradient-text-grey">
-                Hi, I'm
+              <span style={{ display: 'block', marginBottom: '0.5rem' }} className="text-gray-static">
+                Hi, I&apos;m
               </span>
               <span className="gradient-text" style={{ display: 'inline-block', minHeight: '1.2em' }}>
                 {typedText}
