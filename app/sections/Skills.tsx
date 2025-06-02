@@ -109,6 +109,7 @@ export default function Skills() {
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skill.name}
+                    className="tech-icon"
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -117,15 +118,7 @@ export default function Skills() {
                       padding: '0.5rem',
                       cursor: 'default',
                       width: '100%',
-                      maxWidth: '140px',
-                      transition: 'transform 0.2s ease',
-                      willChange: 'transform'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
+                      maxWidth: '140px'
                     }}
                   >
                     {/* Tech Icon - Optimized size and loading */}
@@ -214,21 +207,14 @@ export default function Skills() {
               ].map((tool) => (
                 <div
                   key={tool.name}
+                  className="tech-icon"
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     gap: '0.75rem',
                     padding: '0.5rem',
-                    cursor: 'default',
-                    transition: 'transform 0.2s ease',
-                    willChange: 'transform'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
+                    cursor: 'default'
                   }}
                 >
                   {/* Tool Icon - Lazy loaded */}

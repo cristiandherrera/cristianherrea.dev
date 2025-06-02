@@ -1,8 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import Link from "next/link";
 import Image from 'next/image';
+
+// Memoize tech icon component to prevent re-renders
+const TechIcon = memo(({ skill }: { skill: { name: string; svg: string } }) => (
+  <div
+    className="tech-icon"
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '0.25rem',
+      padding: '0.25rem',
+      cursor: 'default'
+    }}
+  >
+    <Image
+      src={skill.svg}
+      alt={skill.name}
+      width={48}
+      height={48}
+      loading="lazy"
+      style={{
+        width: '48px',
+        height: '48px',
+        objectFit: 'contain'
+      }}
+    />
+    <span style={{
+      fontSize: '0.75rem',
+      fontWeight: 500,
+      color: 'var(--foreground)',
+      textAlign: 'center'
+    }}>
+      {skill.name}
+    </span>
+  </div>
+));
+TechIcon.displayName = 'TechIcon';
 
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
@@ -10,16 +47,23 @@ export default function Hero() {
 
   useEffect(() => {
     let currentIndex = 0;
-    const typingInterval = setInterval(() => {
+    let rafId: number;
+    
+    const animate = () => {
       if (currentIndex <= fullName.length) {
         setTypedText(fullName.substring(0, currentIndex));
         currentIndex++;
-      } else {
-        clearInterval(typingInterval);
+        setTimeout(() => {
+          rafId = requestAnimationFrame(animate);
+        }, 100);
       }
-    }, 100);
+    };
+    
+    rafId = requestAnimationFrame(animate);
 
-    return () => clearInterval(typingInterval);
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -191,44 +235,7 @@ export default function Hero() {
                   { name: "Node.js", svg: "/tech/Node.js.svg" },
                   { name: "MongoDB", svg: "/tech/MongoDB.svg" }
                 ].map((skill) => (
-                  <div
-                    key={skill.name}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: '0.25rem',
-                      padding: '0.25rem',
-                      transition: 'transform 0.2s ease',
-                      cursor: 'default'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                  >
-                    <Image
-                      src={skill.svg}
-                      alt={skill.name}
-                      width={48}
-                      height={48}
-                      style={{
-                        width: '48px',
-                        height: '48px',
-                        objectFit: 'contain'
-                      }}
-                    />
-                    <span style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 500,
-                      color: 'var(--foreground)',
-                      textAlign: 'center'
-                    }}>
-                      {skill.name}
-                    </span>
-                  </div>
+                  <TechIcon key={skill.name} skill={skill} />
                 ))}
               </div>
             </div>
@@ -256,44 +263,7 @@ export default function Hero() {
                   { name: "SQL Database", svg: "/tech/Azure SQL Database.svg" },
                   { name: "Blob Storage", svg: "/tech/storage-blob.svg" },
                 ].map((skill) => (
-                  <div
-                    key={skill.name}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: '0.25rem',
-                      padding: '0.25rem',
-                      transition: 'transform 0.2s ease',
-                      cursor: 'default'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                  >
-                    <Image
-                      src={skill.svg}
-                      alt={skill.name}
-                      width={48}
-                      height={48}
-                      style={{
-                        width: '48px',
-                        height: '48px',
-                        objectFit: 'contain'
-                      }}
-                    />
-                    <span style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 500,
-                      color: 'var(--foreground)',
-                      textAlign: 'center'
-                    }}>
-                      {skill.name}
-                    </span>
-                  </div>
+                  <TechIcon key={skill.name} skill={skill} />
                 ))}
               </div>
             </div>
@@ -318,44 +288,7 @@ export default function Hero() {
                   { name: "GitHub", svg: "/tech/GitHub.svg" },
                   { name: "BitBucket", svg: "/tech/BitBucket.svg" }
                 ].map((skill) => (
-                  <div
-                    key={skill.name}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: '0.25rem',
-                      padding: '0.25rem',
-                      transition: 'transform 0.2s ease',
-                      cursor: 'default'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                  >
-                    <Image
-                      src={skill.svg}
-                      alt={skill.name}
-                      width={48}
-                      height={48}
-                      style={{
-                        width: '48px',
-                        height: '48px',
-                        objectFit: 'contain'
-                      }}
-                    />
-                    <span style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 500,
-                      color: 'var(--foreground)',
-                      textAlign: 'center'
-                    }}>
-                      {skill.name}
-                    </span>
-                  </div>
+                  <TechIcon key={skill.name} skill={skill} />
                 ))}
               </div>
             </div>

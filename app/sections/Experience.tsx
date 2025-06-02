@@ -115,22 +115,13 @@ export default function Experience() {
                   {/* Content */}
                   <div style={{ marginLeft: '5rem', width: '100%' }} className={index % 2 === 0 ? "timeline-content-left" : "timeline-content-right"}>
                     <div 
-                      className="glass" 
+                      className="glass timeline-card" 
                       style={{ 
                         padding: '1.5rem', 
                         borderRadius: '0.5rem', 
-                        transition: 'all 300ms',
                         cursor: 'pointer',
                         position: 'relative'
                       }} 
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.boxShadow = '0 10px 30px -5px rgba(59, 130, 246, 0.3)';
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                      }} 
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.boxShadow = 'none';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                      }}
                       onClick={() => openModal(exp)}
                     >
                       <span style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600 }}>{exp.date}</span>
