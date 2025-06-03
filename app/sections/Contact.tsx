@@ -216,7 +216,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {/* Name Field */}
               <div>
-                <label style={{ 
+                <label htmlFor="contact-name" style={{ 
                   display: 'block', 
                   marginBottom: '0.5rem', 
                   fontWeight: 500,
@@ -227,6 +227,7 @@ export default function Contact() {
                 <input
                   type="text"
                   name="name"
+                  id="contact-name"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -248,17 +249,18 @@ export default function Contact() {
               
               {/* Email Field */}
               <div>
-                <label style={{ 
+                <label htmlFor="contact-email" style={{ 
                   display: 'block', 
                   marginBottom: '0.5rem', 
                   fontWeight: 500,
                   color: 'var(--foreground)'
                 }}>
-                  Email *
+                  Email Address *
                 </label>
                 <input
                   type="email"
                   name="email"
+                  id="contact-email"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -280,7 +282,7 @@ export default function Contact() {
               
               {/* Subject Field */}
               <div>
-                <label style={{ 
+                <label htmlFor="contact-subject" style={{ 
                   display: 'block', 
                   marginBottom: '0.5rem', 
                   fontWeight: 500,
@@ -291,6 +293,7 @@ export default function Contact() {
                 <input
                   type="text"
                   name="subject"
+                  id="contact-subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
@@ -312,7 +315,7 @@ export default function Contact() {
               
               {/* Message Field */}
               <div>
-                <label style={{ 
+                <label htmlFor="contact-message" style={{ 
                   display: 'block', 
                   marginBottom: '0.5rem', 
                   fontWeight: 500,
@@ -322,10 +325,11 @@ export default function Contact() {
                 </label>
                 <textarea
                   name="message"
+                  id="contact-message"
+                  rows={5}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
                   style={{
                     width: '100%',
                     padding: '0.75rem',

@@ -124,14 +124,14 @@ export default function Experience() {
                       }} 
                       onClick={() => openModal(exp)}
                     >
-                      <span style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600 }}>{exp.date}</span>
+                      <span style={{ fontSize: '0.875rem', color: 'var(--foreground)', fontWeight: 600 }}>{exp.date}</span>
                       <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '0.5rem' }}>{exp.title}</h3>
                       <h4 className="text-gray-static" style={{ fontSize: '1.125rem' }}>{exp.company}</h4>
                       <p className="text-gray-static" style={{ marginTop: '0.5rem' }}>{exp.description}</p>
                       <div style={{
                         marginTop: '1rem',
                         fontSize: '0.875rem',
-                        color: 'var(--color-primary)',
+                        color: 'var(--foreground)',
                         fontWeight: 500,
                         display: 'flex',
                         alignItems: 'center',
@@ -191,7 +191,7 @@ export default function Experience() {
               marginBottom: '1.5rem'
             }}>
               <div>
-                <span style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.875rem', color: 'var(--foreground)', fontWeight: 600 }}>
                   {modal.experience.date}
                 </span>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginTop: '0.5rem' }}>
@@ -235,7 +235,7 @@ export default function Experience() {
                     <span style={{
                       position: 'absolute',
                       left: 0,
-                      color: 'var(--color-primary)'
+                      color: 'var(--foreground)'
                     }}>▸</span>
                     {detail}
                   </li>
