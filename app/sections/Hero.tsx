@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, memo } from "react";
+import { memo } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 
@@ -42,29 +42,7 @@ const TechIcon = memo(({ skill }: { skill: { name: string; svg: string } }) => (
 TechIcon.displayName = 'TechIcon';
 
 export default function Hero() {
-  const [typedText, setTypedText] = useState("");
   const fullName = "Cristian Herrera";
-
-  useEffect(() => {
-    let currentIndex = 0;
-    let rafId: number;
-    
-    const animate = () => {
-      if (currentIndex <= fullName.length) {
-        setTypedText(fullName.substring(0, currentIndex));
-        currentIndex++;
-        setTimeout(() => {
-          rafId = requestAnimationFrame(animate);
-        }, 100);
-      }
-    };
-    
-    rafId = requestAnimationFrame(animate);
-
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, []);
 
   return (
     <section id="home" style={{ 
@@ -107,9 +85,8 @@ export default function Hero() {
               <span style={{ display: 'block', marginBottom: '0.5rem' }} className="text-gray-static">
                 Hi, I&apos;m
               </span>
-              <span className="gradient-text" style={{ display: 'inline-block', minHeight: '1.2em' }}>
-                {typedText}
-                <span style={{ animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>|</span>
+              <span className="gradient-text">
+                {fullName}
               </span>
             </h1>
             

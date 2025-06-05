@@ -18,25 +18,47 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+    let ticking = false;
+    let elementCache: { [key: string]: HTMLElement } = {};
 
-      const sections = navLinks.map(link => link.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
+    // Cache DOM elements on mount
+    const cacheElements = () => {
+      navLinks.forEach(link => {
+        const element = document.getElementById(link.href.substring(1));
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+          elementCache[link.href.substring(1)] = element;
         }
+      });
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setScrolled(scrollY > 10);
+
+          const scrollPosition = scrollY + 100;
+
+          // Use cached elements instead of querying DOM repeatedly
+          for (const section of Object.keys(elementCache)) {
+            const element = elementCache[section];
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section);
+              break;
+            }
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Cache elements after mount
+    cacheElements();
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

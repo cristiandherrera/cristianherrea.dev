@@ -53,16 +53,7 @@ export default function Skills() {
     <section id="skills" style={{ paddingTop: '5rem', paddingBottom: '5rem', position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: 700,
-            marginBottom: '1rem',
-            color: 'var(--foreground)'
-          }}>
-            Relevant <span style={{ color: 'var(--color-primary)' }}>Skills</span>
-          </h2>
-        </div>
+        <h2 className="section-title">Relevant Skills</h2>
         
         {/* Skills Container */}
         <div className="glass" style={{
