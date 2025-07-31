@@ -19,7 +19,7 @@ export default function Navbar() {
 
   useEffect(() => {
     let ticking = false;
-    let elementCache: { [key: string]: HTMLElement } = {};
+    const elementCache: { [key: string]: HTMLElement } = {};
 
     // Cache DOM elements on mount
     const cacheElements = () => {
